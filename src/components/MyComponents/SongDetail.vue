@@ -3,8 +3,6 @@
         <div class="back">
             <div @click="goBack"><img src="../../assets/img/back.svg" width="26px"></div>
             <div>{{ singerName }}/{{ songName }}</div>
-            <!-- <div>/</div>
-            <div>{{ songName }}</div> -->
         </div>
         <div class="animate">
             <div :class="{ disc: isPlaying }" class="discs">
@@ -43,7 +41,6 @@
 </template>
 
 <script>
-import { get } from '../../api/axios'
 export default {
     data() {
         return {
@@ -172,54 +169,6 @@ export default {
         },
         getSongUrl(id) {
             this.$store.dispatch('getSongUrl', id)
-            // this.$store.commit('setIsSelect', { isSelect: true })
-            // this.$store.commit('setSongId', { songId: id })
-            // get('/song/url?id=' + id, {})
-            //     .then(data => {
-            //         console.log(data)
-            //         if (data.code == '200') {
-            //             var url = data.data[0].url
-            //             this.$store.commit('setAudioSrc', { audioSrc: url })
-            //             this.getSongDetail(id)
-            //         }
-            //     })
-            //     .catch(error => {
-            //         console.error(error);
-            //     });
-        },
-        getSongDetail(id) {
-            get('/song/detail?ids=' + id, {})
-                .then(data => {
-                    console.log(data)
-                    var song = data.songs[0]
-                    this.$store.commit('setSongName', { songName: song.name })
-                    this.$store.commit('setSongImg', { songImg: song.al.picUrl })
-                    this.$store.commit('setSinger', { singer: song.ar[0].name })
-                    this.getSongWords(id)
-                    this.$store.commit('setIsPlay', { isPlay: true })
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        },
-        getSongWords(id) {
-            get('/lyric?id=' + id, {})
-                .then(data => {
-                    console.log(data.lrc.lyric)
-                    this.getSongWord_word(id)
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        },
-        getSongWord_word(id) {
-            get('/lyric/new?id=' + id, {})
-                .then(data => {
-                    console.log(data.lrc.lyric)
-                })
-                .catch(error => {
-                    console.error(error);
-                });
         },
     }
 }
