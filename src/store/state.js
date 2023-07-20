@@ -30,4 +30,8 @@ export default {
   songList: [], //当前歌曲列表
   songId: "", //当前音乐id,
   topSongList: [], //歌手热门歌曲
+  MVList: [], //mv列表
+  MVSrc: "", //mv地址
+  mvCover: "", //mv封面地址
+  mvDesc: "", //mv描述
 };

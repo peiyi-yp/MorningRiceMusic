@@ -50,4 +50,16 @@ export default {
   setTopSongList: (state, payload) => {
     state.topSongList = payload.topSongList;
   },
+  setMVList: (state, payload) => {
+    state.MVList = payload.MVList;
+  },
+  setMVSrc: (state, payload) => {
+    state.MVSrc = payload.MVSrc;
+  },
+  setMvCover: (state, payload) => {
+    state.mvCover = payload.mvCover;
+  },
+  setMvDesc: (state, payload) => {
+    state.mvDesc = payload.mvDesc;
+  },
 };

@@ -56,4 +56,16 @@ export default {
   getTopSongList: (state) => {
     return state.topSongList;
   },
+  getMVList: (state) => {
+    return state.MVList;
+  },
+  getMVSrc: (state) => {
+    return state.MVSrc;
+  },
+  getMvCover: (state) => {
+    return state.mvCover;
+  },
+  getMvDesc: (state) => {
+    return state.mvDesc;
+  },
 };

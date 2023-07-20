@@ -4,7 +4,7 @@
             :animated="true">
             <van-tab title="推荐" to="/Recomand"></van-tab>
             <van-tab title="歌手" to="/Singer"></van-tab>
-            <van-tab title="排行" to="/Rank"></van-tab>
+            <van-tab title="MV排行" to="/Rank"></van-tab>
             <van-tab title="搜索" to="/Search"></van-tab>
         </van-tabs>
         <!-- <router-link tag="div" exact class="tab-item" :class="{ 'active': $route.path === '/Recomand' }" to="/Recomand">

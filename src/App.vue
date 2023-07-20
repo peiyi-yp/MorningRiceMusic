@@ -52,6 +52,9 @@ export default {
       } else if (to.path.includes('/SongList')) {
         this.$store.commit('setReDisplay', { reDisplay: false })
         this.$store.commit('setReDisplays', { reDisplays: true })
+      } else if (to.path.includes('/MVDetail')) {
+        this.$store.commit('setReDisplay', { reDisplay: false })
+        this.$store.commit('setReDisplays', { reDisplays: false })
       } else {
         this.$store.commit('setReDisplay', { reDisplay: false })
       }
