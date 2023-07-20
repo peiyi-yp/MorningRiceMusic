@@ -21,7 +21,8 @@ export default {
         return {
             active: 0
         }
-    }, methods: {
+    },
+    methods: {
 
     },
     created() {
@@ -68,4 +69,5 @@ export default {
     color: #FFDB26;
     font-family: "阿里妈妈方圆体 VF Regular";
     font-weight: 700;
-}</style>
+}
+</style>

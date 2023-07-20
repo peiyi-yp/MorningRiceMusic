@@ -31,7 +31,26 @@ export default {
         return {
             active: 0
         }
-    }, methods: {
+    },
+    watch: {
+        $route(to) {
+            switch (to.path) {
+                case '/Recomand':
+                    this.active = 0
+                    break
+                case '/Singer':
+                    this.active = 1
+                    break
+                case '/Rank':
+                    this.active = 2
+                    break
+                case '/Search':
+                    this.active = 3
+                    break
+            }
+        },
+    },
+    methods: {
 
     },
     created() {

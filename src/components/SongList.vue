@@ -1,29 +1,31 @@
 <template>
     <div class="songList">
-        <van-sticky>
-            <div class="singName">
-                <div @click="goBack"><img src="../assets/img/back.svg" width="26px"></div>
-                <div>{{ singerName }}</div>
-            </div>
-        </van-sticky>
-        <div class="songBody">
-            <div v-for="(item, index) in songList" :key="index" :class="{ 'highlighted': selectedItem === item.id }"
-                class="songItem" @click="getSongUrl(item.id)" @touchstart="handleTouchStart(item.id)"
-                @touchend="handleTouchEnd">
-                <div class="songIndex">{{ index + 1 }}</div>
-                <div style="width: 90%;">
-                    <div class="songName">{{ item.name }}</div>
-                    <div class="all">
-                        <div class="songArt">{{ item.ar[0].name }}</div>
-                        <div class="songDesc">{{ item.alia[0] }}</div>
+        <v-touch v-on:swipeleft="swiperleft" v-on:swiperight="swiperright" class="wrapper">
+            <van-sticky>
+                <div class="singName">
+                    <div @click="goBack"><img src="../assets/img/back.svg" width="26px"></div>
+                    <div>{{ singerName }}</div>
+                </div>
+            </van-sticky>
+            <div class="songBody">
+                <div v-for="(item, index) in songList" :key="index" :class="{ 'highlighted': selectedItem === item.id }"
+                    class="songItem" @click="getSongUrl(item.id)" @touchstart="handleTouchStart(item.id)"
+                    @touchend="handleTouchEnd">
+                    <div class="songIndex">{{ index + 1 }}</div>
+                    <div style="width: 90%;">
+                        <div class="songName">{{ item.name }}</div>
+                        <div class="all">
+                            <div class="songArt">{{ item.ar[0].name }}</div>
+                            <div class="songDesc">{{ item.alia[0] }}</div>
+                        </div>
+                    </div>
+                    <div class="videoPlay">
+                        <img src="../assets/img/songListPlay.svg" width="20px">
                     </div>
                 </div>
-                <div class="videoPlay">
-                    <img src="../assets/img/songListPlay.svg" width="20px">
-                </div>
             </div>
-        </div>
-        <router-view></router-view>
+            <router-view></router-view>
+        </v-touch>
     </div>
 </template>
 
@@ -56,6 +58,12 @@ export default {
         }
     },
     methods: {
+        swiperleft: function () {  //左划切换到goods页
+            this.$router.push({ 'path': '/SongDetail' });
+        },
+        swiperright: function () { //右滑切换到detail页
+            this.$router.go(-1)
+        },
         getSongUrl(id) {
             this.$store.dispatch('getSongUrl', id)
         },

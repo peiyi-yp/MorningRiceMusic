@@ -1,12 +1,14 @@
 <template>
     <div class="rank">
-        <div v-for="(item, index) in list" :key="index" class="list" @click="getMvUrl(item.id)">
-            <img :src="item.cover" width="40%">
-            <div class="name">
-                <p>{{ item.artistName }}</p>
-                <div>{{ item.name }}</div>
+        <v-touch v-on:swipeleft="swiperleft" v-on:swiperight="swiperright" class="wrapper">
+            <div v-for="(item, index) in list" :key="index" class="list" @click="getMvUrl(item.id)">
+                <img :src="item.cover" width="40%">
+                <div class="name">
+                    <p>{{ item.artistName }}</p>
+                    <div>{{ item.name }}</div>
+                </div>
             </div>
-        </div>
+        </v-touch>
     </div>
 </template>
 
@@ -21,6 +23,12 @@ export default {
         }
     },
     methods: {
+        swiperleft: function () {  //左划切换到goods页
+            this.$router.push({ 'path': '/Search' });
+        },
+        swiperright: function () { //右滑切换到detail页
+            this.$router.push({ 'path': '/Singer' });
+        },
         getMvUrl(id) {
             this.$router.push({
                 name: "MVDetail",

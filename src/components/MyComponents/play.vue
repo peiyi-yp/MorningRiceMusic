@@ -157,7 +157,6 @@ export default {
             this.isPlay = true
         },
         onTimeupdate(e) {
-            // console.log("时长变化", e)
             this.current = Math.floor(e.srcElement.currentTime)
             this.$store.commit('setCurrent', { current: { type: 'default', time: this.current } })
             const minutes = Math.floor(e.srcElement.currentTime / 60); // 计算分钟数
@@ -167,7 +166,6 @@ export default {
             this.currentTime = formattedDuration
         },
         onLoadedmetadata(e) {
-            // console.log("音频文件加载", e)
             var timestamp = e.srcElement.duration;
             const minutes = Math.floor(timestamp / 60); // 计算分钟数
             const seconds = Math.floor(timestamp % 60); // 计算剩余的秒数并四舍五入

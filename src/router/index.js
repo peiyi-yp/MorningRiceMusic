@@ -31,6 +31,11 @@ const MVDetail = (resolve) => {
     resolve(module);
   });
 };
+const Search = (resolve) => {
+  import("../components/Search.vue").then((module) => {
+    resolve(module);
+  });
+};
 
 Vue.use(VueRouter);
 
@@ -71,6 +76,11 @@ export default new VueRouter({
       path: "/MVDetail/:id",
       name: "MVDetail",
       component: MVDetail,
+    },
+    {
+      path: "/Search",
+      name: "Search",
+      component: Search,
     },
     // {
     //   path: "/search",

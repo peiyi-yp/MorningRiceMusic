@@ -1,26 +1,28 @@
 <template>
     <div class="recomand">
-        <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-            <van-swipe-item v-for="(img, index) in imgList" :key="index" @click="getBannerSong(img.song)">
-                <img :src="img.pic" width="100%" height="" />
-            </van-swipe-item>
-        </van-swipe>
-        <SwiperMenu :list="list" :fwidth="80" :fheight="80"></SwiperMenu>
-        <div>
-            <h3 style="text-align: left;padding-left: 10px;">精品歌单<van-icon name="arrow" /></h3>
-            <div style="margin-bottom: 10px;">
-                <SwiperMenu :type="songLists" :list="hotList" :fwidth="140" :fheight="140" :swidth="100" :sheight="100">
-                </SwiperMenu>
-            </div>
-        </div>
-        <div>
-            <h3 style="text-align: left;padding-left: 10px;">热门歌手<van-icon name="arrow" /></h3>
+        <v-touch v-on:swipeleft="swiperleft" v-on:swiperight="swiperright" class="wrapper">
+            <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+                <van-swipe-item v-for="(img, index) in imgList" :key="index" @click="getBannerSong(img.song)">
+                    <img :src="img.pic" width="100%" height="" />
+                </van-swipe-item>
+            </van-swipe>
+            <SwiperMenu :list="list" :fwidth="80" :fheight="80"></SwiperMenu>
             <div>
-                <SwiperMenu :type="singers" :list="hotSinger" :fwidth="130" :fheight="130" :swidth="100" :sheight="100">
-                </SwiperMenu>
+                <h3 style="text-align: left;padding-left: 10px;">精品歌单<van-icon name="arrow" /></h3>
+                <div style="margin-bottom: 10px;">
+                    <SwiperMenu :type="songLists" :list="hotList" :fwidth="140" :fheight="140" :swidth="100" :sheight="100">
+                    </SwiperMenu>
+                </div>
             </div>
-        </div>
-        <router-view></router-view>
+            <div>
+                <h3 style="text-align: left;padding-left: 10px;">热门歌手<van-icon name="arrow" /></h3>
+                <div>
+                    <SwiperMenu :type="singers" :list="hotSinger" :fwidth="130" :fheight="130" :swidth="100" :sheight="100">
+                    </SwiperMenu>
+                </div>
+            </div>
+            <router-view></router-view>
+        </v-touch>
     </div>
 </template>
 
@@ -47,6 +49,12 @@ export default {
         }
     },
     methods: {
+        swiperleft: function () {  //左划切换到goods页
+            this.$router.push({ 'path': '/Singer' });
+        },
+        swiperright: function () { //右滑切换到detail页
+            // this.$router.push({ 'path': '/Singer' });
+        },
         selectList() {
             this.$router.push("/Singer")
         },

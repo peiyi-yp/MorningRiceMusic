@@ -1,42 +1,44 @@
 <template>
     <div id="songDetail">
-        <div class="back">
-            <div @click="goBack"><img src="../../assets/img/back.svg" width="26px"></div>
-            <div>{{ singerName }}/{{ songName }}</div>
-        </div>
-        <div class="animate">
-            <div :class="{ disc: isPlaying }" class="discs">
-                <img :src="songImg ? songImg : images" ref="images">
+        <v-touch v-on:swipeleft="swiperleft" v-on:swiperight="swiperright" class="wrapper">
+            <div class="back">
+                <div @click="goBack"><img src="../../assets/img/back.svg" width="26px"></div>
+                <div>{{ singerName }}/{{ songName }}</div>
             </div>
-        </div>
-        <div class="controls_ico" style="margin-top: 15vh;">
-            <div><img src="../../assets/img/love.svg"></div>
-            <div><img src="../../assets/img/down.svg"></div>
-            <div><img src="../../assets/img/sing.svg"></div>
-            <div><img src="../../assets/img/comment.svg"></div>
-            <div><img src="../../assets/img/more.svg"></div>
-        </div>
-        <div class="controls">
-            <div class="controls_left">{{ currentTime }}</div>
-            <div class="controls_middle">
-                <van-slider :value="current" :max="duration" stroke-width="2px" button-size="8px" active-color="#FFDB26"
-                    @change="onChange" class="controls_middle_slide" />
+            <div class="animate">
+                <div :class="{ disc: isPlaying }" class="discs">
+                    <img :src="songImg ? songImg : images" ref="images">
+                </div>
             </div>
-            <div class="controls_right">{{ durationTime }}</div>
-        </div>
-        <div class="controls_ico">
-            <div><img src="../../assets/img/random.svg"></div>
-            <div @click="pre"><img src="../../assets/img/pre.svg"></div>
-            <div @click="changeStatus"><img :src="isPlaying ? pauses : plays"></div>
-            <div @click="next"><img src="../../assets/img/next.svg"></div>
-            <div @click="getSongList"><img src="../../assets/img/list.svg"></div>
-        </div>
-        <div class="song_list" v-show="showList">
-            <div v-for="(item, index) in songList" :key="index" @click="getSongUrl(item.id)">
-                {{ item.name }}-{{ item.ar[0].name }}
+            <div class="controls_ico" style="margin-top: 15vh;">
+                <div><img src="../../assets/img/love.svg"></div>
+                <div><img src="../../assets/img/down.svg"></div>
+                <div><img src="../../assets/img/sing.svg"></div>
+                <div><img src="../../assets/img/comment.svg"></div>
+                <div><img src="../../assets/img/more.svg"></div>
             </div>
-        </div>
-        <router-view></router-view>
+            <div class="controls">
+                <div class="controls_left">{{ currentTime }}</div>
+                <div class="controls_middle">
+                    <van-slider :value="current" :max="duration" stroke-width="2px" button-size="8px" active-color="#FFDB26"
+                        @change="onChange" class="controls_middle_slide" />
+                </div>
+                <div class="controls_right">{{ durationTime }}</div>
+            </div>
+            <div class="controls_ico">
+                <div><img src="../../assets/img/random.svg"></div>
+                <div @click="pre"><img src="../../assets/img/pre.svg"></div>
+                <div @click="changeStatus"><img :src="isPlaying ? pauses : plays"></div>
+                <div @click="next"><img src="../../assets/img/next.svg"></div>
+                <div @click="getSongList"><img src="../../assets/img/list.svg"></div>
+            </div>
+            <div class="song_list" v-show="showList">
+                <div v-for="(item, index) in songList" :key="index" @click="getSongUrl(item.id)">
+                    {{ item.name }}-{{ item.ar[0].name }}
+                </div>
+            </div>
+            <router-view></router-view>
+        </v-touch>
     </div>
 </template>
 
@@ -169,6 +171,12 @@ export default {
         },
         getSongUrl(id) {
             this.$store.dispatch('getSongUrl', id)
+        },
+        swiperleft: function () {  //左划切换到goods页
+            // this.$router.push({ 'path': '/SongDetail' });
+        },
+        swiperright: function () { //右滑切换到detail页
+            this.$router.go(-1)
         },
     }
 }

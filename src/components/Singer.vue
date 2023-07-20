@@ -1,27 +1,29 @@
 <template>
     <div class="singer">
-        <div class="singer_one">
-            <div class="singer_type">
-                <div v-for="(item, index) in sTypes" :key="index" class="labels" :class="{ select: item.id == singerType }"
-                    @click="typeChange(item.id)">
-                    {{ item.name }}
+        <v-touch v-on:swipeleft="swiperleft" v-on:swiperight="swiperright" class="wrapper">
+            <div class="singer_one">
+                <div class="singer_type">
+                    <div v-for="(item, index) in sTypes" :key="index" class="labels"
+                        :class="{ select: item.id == singerType }" @click="typeChange(item.id)">
+                        {{ item.name }}
+                    </div>
+                </div>
+                <div class="singer_area">
+                    <div v-for="(item, index) in sArea" :key="index" class="labels"
+                        :class="{ select: item.id == singerArea }" @click="areaChange(item.id)">
+                        {{ item.name }}
+                    </div>
                 </div>
             </div>
-            <div class="singer_area">
-                <div v-for="(item, index) in sArea" :key="index" class="labels" :class="{ select: item.id == singerArea }"
-                    @click="areaChange(item.id)">
-                    {{ item.name }}
+            <div class="singer_list">
+                <div v-for="(item, index) in singerList" :key="index" class="singer_list_item"
+                    @click="getSongsAll(item.id, item.name)">
+                    <div><img :src="item.picUrl" width="80px" height="80px" v-lazy="item.picUrl"></div>
+                    <div>{{ item.name }}</div>
                 </div>
             </div>
-        </div>
-        <div class="singer_list">
-            <div v-for="(item, index) in singerList" :key="index" class="singer_list_item"
-                @click="getSongsAll(item.id, item.name)">
-                <div><img :src="item.picUrl" width="80px" height="80px" v-lazy="item.picUrl"></div>
-                <div>{{ item.name }}</div>
-            </div>
-        </div>
-        <router-view></router-view>
+            <router-view></router-view>
+        </v-touch>
     </div>
 </template>
 
@@ -50,6 +52,12 @@ export default {
         }
     },
     methods: {
+        swiperleft: function () {  //左划切换到goods页
+            this.$router.push({ 'path': '/Rank' });
+        },
+        swiperright: function () { //右滑切换到detail页
+            this.$router.push({ 'path': '/Recomand' });
+        },
         handleIndexChange(e) {
             console.log(e)
         },
