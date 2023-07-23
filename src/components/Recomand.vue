@@ -10,8 +10,8 @@
             <div>
                 <h3 style="text-align: left;padding-left: 10px;">精品歌单<van-icon name="arrow" /></h3>
                 <div style="margin-bottom: 10px;">
-                    <SwiperMenu :type="songLists" :list="hotList" :fwidth="140" :fheight="140" :swidth="100" :sheight="100">
-                    </SwiperMenu>
+                    <SongListSwiper :type="songLists" :list="hotList" :swidth="100" :sheight="100">
+                    </SongListSwiper>
                 </div>
             </div>
             <div>
@@ -32,6 +32,7 @@ import { getPlayListHot } from '../api/index'
 import { getHomeMenu } from '../api/index'
 import { get } from '../api/axios'
 import SwiperMenu from './MyComponents/SwiperMenu'
+import SongListSwiper from './MyComponents/SongListSwiper'
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'Recomand',
