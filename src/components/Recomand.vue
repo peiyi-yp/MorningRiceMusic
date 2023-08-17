@@ -31,13 +31,13 @@ import { getBanner } from '../api/index'
 import { getPlayListHot } from '../api/index'
 import { getHomeMenu } from '../api/index'
 import { get } from '../api/axios'
-import SwiperMenu from './MyComponents/SwiperMenu'
-import SongListSwiper from './MyComponents/SongListSwiper'
+import SwiperMenu from './MyComponents/SwiperMenu.vue'
+import SongListSwiper from './MyComponents/SongListSwiper.vue'
 export default {
-    // eslint-disable-next-line vue/multi-word-component-names
     name: 'Recomand',
-    comments: {
-        SwiperMenu
+    components: {
+        SwiperMenu,
+        SongListSwiper
     },
     data() {
         return {

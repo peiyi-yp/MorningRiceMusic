@@ -2,12 +2,12 @@
     <div id="top_head">
         <div class="head">
             <div>
-                <img :src="require('../assets/img/logo.svg')" />
+                <img src="@/assets/img/logo.png" />
             </div>
             <div class="title">
                 晨米音乐</div>
             <div>
-                <img :src="require('../assets/img/mine.svg')" />
+                <img src="@/assets/img/mine.svg" />
             </div>
         </div>
     </div>
